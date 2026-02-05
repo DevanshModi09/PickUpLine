@@ -27,7 +27,7 @@ function App() {
       <div>loadingcontent</div>
     ) : (
       <>
-        <h1>Created By Tarun, Devansh and Harsh Panchal</h1>
+        <h1>Created By Tarun, Deepak kumar , Devansh and Harsh Panchal</h1>
         <h3>{line}</h3>
         <button onClick={getLine}>Get New Line</button>
         <footer>
