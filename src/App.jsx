@@ -16,6 +16,10 @@ function App() {
       <>
         <h1>Click The button to get the pickup line</h1>
         <button onClick={getLine}>ClickHere </button>
+        <footer>
+          Note: We are using a api , so we are not responsible if you find any
+          line a bit creepy{' '}
+        </footer>
       </>
     );
   } else {
@@ -26,6 +30,10 @@ function App() {
         <h1>Created By Tarun, Devansh and Harsh Panchal</h1>
         <h3>{line}</h3>
         <button onClick={getLine}>Get New Line</button>
+        <footer>
+          Note: We are using a api , so we are not responsible if you find any
+          line a bit creepy{' '}
+        </footer>
       </>
     );
   }
