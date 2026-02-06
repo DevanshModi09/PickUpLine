@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import myImage from './assets/IMG_4779.png';
 
 function App() {
   const [isLoading, setLoading] = useState(true);
@@ -27,7 +28,11 @@ function App() {
       <div>loadingcontent</div>
     ) : (
       <>
-        <h1>Created By Tarun, Deepak kumar , Devansh and Harsh Panchal</h1>
+        <h1>
+          Created By Tarun, ,Akshar Sharma, Deepak kumar , Devansh and Harsh
+          Panchal
+        </h1>
+        <img src={myImage} style={{ height: 200, width: 200 }} />
         <h3>{line}</h3>
         <button onClick={getLine}>Get New Line</button>
         <footer>
