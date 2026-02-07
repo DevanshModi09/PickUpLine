@@ -6,12 +6,19 @@ import myImage from './assets/IMG_4779.png';
 function App() {
   const [isLoading, setLoading] = useState(false);
   const [line, setLine] = useState('');
+  const [error, setError] = useState('');
 
   const getLine = async () => {
     setLoading(true);
-    const { data } = await axios.get('https://rizzapi.vercel.app/random');
-    setLine(data.text);
-    setLoading(false);
+    setError('');
+    try {
+      const { data } = await axios.get('https://rizzapi.vercel.app/random');
+      setLine(data.text);
+    } catch {
+      setError('Could not fetch a line right now. Try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -30,6 +37,7 @@ function App() {
           <h3>{line}</h3>
         </>
       )}
+      {error && !isLoading && <p>{error}</p>}
       <button onClick={getLine} disabled={isLoading}>
         {isLoading ? 'Loading...' : line ? 'Get New Line' : 'ClickHere '}
       </button>
