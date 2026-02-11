@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import { fetchPickUpLine } from './api';
 import myImage from './assets/IMG_4779.png';
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.get('https://rizzapi.vercel.app/random');
-      setLine(data.text);
+      const text = await fetchPickUpLine();
+      setLine(text);
     } catch {
       setError('Could not fetch a line right now. Try again.');
     } finally {
@@ -33,7 +33,11 @@ function App() {
       {isLoading && <div>loadingcontent</div>}
       {line && !isLoading && (
         <>
-          <img src={myImage} style={{ height: 200, width: 200 }} />
+          <img
+            src={myImage}
+            alt="Creator of PickUpLine"
+            style={{ height: 200, width: 200 }}
+          />
           <h3>{line}</h3>
         </>
       )}
