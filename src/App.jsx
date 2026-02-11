@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 import { fetchPickUpLine } from './api';
-import myImage from './assets/IMG_4779.png';
+import Credits from './components/Credits';
+import LineCard from './components/LineCard';
+import Footer from './components/Footer';
 
 function App() {
   const [isLoading, setLoading] = useState(false);
@@ -22,34 +24,19 @@ function App() {
   };
 
   return (
-    <>
-      {line && (
-        <h1>
-          Created By Tarun, ,Akshar Sharma, Deepak kumar , Devansh and Harsh
-          Panchal
-        </h1>
+    <div className="app">
+      {line && <Credits />}
+      {!line && !isLoading && (
+        <h1>Click The button to get the pickup line</h1>
       )}
-      {!line && !isLoading && <h1>Click The button to get the pickup line</h1>}
-      {isLoading && <div>loadingcontent</div>}
-      {line && !isLoading && (
-        <>
-          <img
-            src={myImage}
-            alt="Creator of PickUpLine"
-            style={{ height: 200, width: 200 }}
-          />
-          <h3>{line}</h3>
-        </>
-      )}
-      {error && !isLoading && <p>{error}</p>}
-      <button onClick={getLine} disabled={isLoading}>
+      {isLoading && <div className="loading">Loading...</div>}
+      {line && !isLoading && <LineCard line={line} />}
+      {error && !isLoading && <p className="error">{error}</p>}
+      <button className="primary-button" onClick={getLine} disabled={isLoading}>
         {isLoading ? 'Loading...' : line ? 'Get New Line' : 'ClickHere '}
       </button>
-      <footer>
-        Note: We are using a api , so we are not responsible if you find any
-        line a bit creepy{' '}
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 }
 
