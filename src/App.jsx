@@ -29,7 +29,12 @@ function App() {
       {!line && !isLoading && (
         <h1>Click The button to get the pickup line</h1>
       )}
-      {isLoading && <div className="loading">Loading...</div>}
+      {isLoading && (
+        <div className="loading" role="status">
+          <span className="spinner" aria-hidden="true" />
+          <span className="sr-only">Loading...</span>
+        </div>
+      )}
       {line && !isLoading && <LineCard line={line} />}
       {error && !isLoading && <p className="error">{error}</p>}
       <button className="primary-button" onClick={getLine} disabled={isLoading}>
