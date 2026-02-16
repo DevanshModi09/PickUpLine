@@ -27,7 +27,7 @@ function App() {
     <div className="app">
       {line && <Credits />}
       {!line && !isLoading && (
-        <h1>Click The button to get the pickup line</h1>
+        <h1>Click the button to get a pickup line</h1>
       )}
       {isLoading && (
         <div className="loading" role="status">
@@ -38,7 +38,7 @@ function App() {
       {line && !isLoading && <LineCard line={line} />}
       {error && !isLoading && <p className="error">{error}</p>}
       <button className="primary-button" onClick={getLine} disabled={isLoading}>
-        {isLoading ? 'Loading...' : line ? 'Get New Line' : 'ClickHere '}
+        {isLoading ? 'Loading...' : line ? 'Get New Line' : 'Click Here'}
       </button>
       <Footer />
     </div>
