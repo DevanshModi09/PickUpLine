@@ -106,9 +106,20 @@
 }
 
 .app-footer {
-  font-size: 0.85rem;
-  opacity: 0.6;
-  max-width: 400px;
+  font-size: 1rem;
+  font-weight: 600;
+  max-width: 420px;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5484d;
+  border-radius: 10px;
+  background: rgba(229, 72, 77, 0.1);
+  color: #e5484d;
+}
+
+.app-footer-icon {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
 }
 
 @media (max-width: 480px) {
