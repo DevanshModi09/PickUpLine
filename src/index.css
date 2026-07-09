@@ -3,9 +3,19 @@
   line-height: 1.5;
   font-weight: 400;
 
+  --accent: #ff4d8d;
+  --accent-2: #a855f7;
+  --accent-soft: rgba(255, 77, 141, 0.35);
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(255, 255, 255, 0.92);
+  background-color: #14101c;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255, 77, 141, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.22), transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(255, 143, 179, 0.12), transparent 55%),
+    linear-gradient(180deg, #1a1226 0%, #120c1a 55%, #0d0812 100%);
+  background-attachment: fixed;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,8 +25,9 @@
 
 a {
   font-weight: 500;
-  color: #ff4d8d;
+  color: var(--accent);
   text-decoration: inherit;
+  transition: color 0.2s ease;
 }
 a:hover {
   color: #ff8fb3;
@@ -29,6 +40,7 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -49,12 +61,16 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, transform 0.15s ease, background-color 0.2s ease;
 }
 button:hover {
-  border-color: #ff4d8d;
+  border-color: var(--accent);
+}
+button:active {
+  transform: scale(0.97);
 }
 button:focus,
 button:focus-visible {
@@ -63,13 +79,18 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #2a1f33;
+    background-color: #fdf3f7;
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(255, 77, 141, 0.16), transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.14), transparent 50%),
+      radial-gradient(circle at 50% 95%, rgba(255, 143, 179, 0.18), transparent 55%),
+      linear-gradient(180deg, #fff5f8 0%, #fdf1f8 55%, #f7ecfb 100%);
   }
   a:hover {
     color: #ff8fb3;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0.04);
   }
 }
