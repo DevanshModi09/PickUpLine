@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
 
 const HEART_EMOJIS = ['💖', '💕', '💘', '❤️', '💗', '✨'];
-const HEART_COUNT = 26;
+const HEART_COUNT = 55;
 
 function createHearts(seed) {
   return Array.from({ length: HEART_COUNT }, (_, i) => ({
     id: `${seed}-${i}`,
     left: Math.random() * 100,
-    size: 0.8 + Math.random() * 1.3,
+    size: 1.4 + Math.random() * 2.2,
     duration: 3 + Math.random() * 2.5,
-    delay: Math.random() * 0.6,
-    drift: (Math.random() - 0.5) * 140,
+    delay: Math.random() * 0.9,
+    drift: (Math.random() - 0.5) * 160,
     emoji: HEART_EMOJIS[Math.floor(Math.random() * HEART_EMOJIS.length)],
   }));
 }
