@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 const HEART_EMOJIS = ['💖', '💕', '💘', '❤️', '💗', '✨'];
 const HEART_COUNT = 26;
 
-function createHearts() {
+function createHearts(seed) {
   return Array.from({ length: HEART_COUNT }, (_, i) => ({
-    id: `${Date.now()}-${i}`,
+    id: `${seed}-${i}`,
     left: Math.random() * 100,
     size: 0.8 + Math.random() * 1.3,
     duration: 3 + Math.random() * 2.5,
@@ -16,14 +16,10 @@ function createHearts() {
 }
 
 function FallingHearts({ trigger }) {
-  const [hearts, setHearts] = useState([]);
-
-  useEffect(() => {
-    if (!trigger) return undefined;
-    setHearts(createHearts());
-    const timeout = setTimeout(() => setHearts([]), 6200);
-    return () => clearTimeout(timeout);
-  }, [trigger]);
+  // Deriving from `trigger` (not state+effect) keeps each burst a pure
+  // replacement of the previous one; animation-fill-mode: forwards leaves
+  // spent hearts parked off-screen so there's nothing to clean up.
+  const hearts = useMemo(() => (trigger ? createHearts(trigger) : []), [trigger]);
 
   if (hearts.length === 0) return null;
 
